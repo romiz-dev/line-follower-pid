@@ -14,15 +14,7 @@
 #define panjanglayar 128
 Adafruit_SSD1306 layar(panjanglayar, lebarlayar, &Wire, -1);
 
-// pin sensor
-// #define sensor1 13
-// #define sensor2 14
-// #define sensor3 27
-// #define sensor4 26
-// #define sensor5 25
-// #define sensor6 33
-// #define sensor7 32
-// #define sensor8 35
+
 const int sensorPins[8] = {
   13, 14, 27, 26, 25, 33, 32, 35
 };
