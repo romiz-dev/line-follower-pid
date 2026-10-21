@@ -18,6 +18,9 @@ Adafruit_SSD1306 layar(panjanglayar, lebarlayar, &Wire, -1);
 const int sensorPins[8] = {
   13, 14, 27, 26, 25, 33, 32, 35
 };
+const int panjangKotak[8] = {
+  40, 46, 52, 58, 64, 70, 76, 82
+};
 
 //--------Pin definitions for the TB6612FNG Motor Driver----
 #define AIN1 18
@@ -49,16 +52,6 @@ int minValues[8], maxValues[8], threshold[8], sensorValue[8], sensorArray[8];
 
 void setup() {
   layar.begin(SSD1306_SWITCHCAPVCC, 0x3C); 
-  layar.clearDisplay();
-  layar.setTextColor(SSD1306_WHITE);
-  layar.setCursor(26, 20);
-  layar.setTextSize(2);
-  for (int i = 0; i < 8; i++){
-    layar.print(analogRead(sensorPins[i]));
-  }
-  
-  layar.display();
-
   // sbi(ADCSRA, ADPS2);
   // cbi(ADCSRA, ADPS1);
   // cbi(ADCSRA, ADPS0);
@@ -81,6 +74,14 @@ void setup() {
 }
 
 void loop() {
+  layar.clearDisplay();
+  layar.setTextColor(SSD1306_WHITE);
+  layar.setCursor(26, 20);
+  layar.setTextSize(2);
+  for (int i = 0; i < 8; i++){
+    layar.fillRect(panjangKotak[i], 27, 5, analogRead(sensorPins[i]) / 25.5, SSD1306_WHITE);
+  }
+  layar.display();
   // put your main code here, to run repeatedly:
   // while (digitalRead(11)) {}
   delay(1000);
