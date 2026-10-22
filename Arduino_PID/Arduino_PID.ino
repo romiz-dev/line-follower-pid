@@ -175,13 +175,8 @@ class MotorDriver {
     // baseSpeed + correction bisa membuat salah satu roda mundur (nilai negatif)
     // supaya belokan tajam lebih responsif, bukan cuma berhenti.
     void drive(int baseSpeed, float correction) {
-<<<<<<< HEAD
-      int speedL = baseSpeed - (int)correction;
-      int speedR = baseSpeed + (int)correction;
-=======
       int speedR = baseSpeed - (int)correction;
       int speedL = baseSpeed + (int)correction;
->>>>>>> 89f144a0295a4e6e1dcd3c773147d9a70fe55e87
       setMotor(speedL, pinL1, pinL2, pinPWML);
       setMotor(speedR, pinR1, pinR2, pinPWMR);
     }
@@ -237,13 +232,12 @@ void setup() {
 }
 
 void loop() {
-    layar.clearDisplay();
-    layar.setTextColor(SSD1306_WHITE);
-    layar.setTextSize(2);
-    for (int i = 0; i < 8; i++){
-      layar.fillRect(panjangKotak[i], 12, 12, analogRead(SENSOR_PINS[i]) / 102.375, SSD1306_WHITE);
-    }
-    layar.display();
+  layar.clearDisplay();
+  layar.setTextColor(SSD1306_WHITE);
+  for (int i = 0; i < 8; i++){
+    layar.fillRect(panjangKotak[i], 12, 12, analogRead(SENSOR_PINS[i]) / 102.375, SSD1306_WHITE);
+  }
+  layar.display();
   // Kalau robot sudah dalam status berhenti (latch), motor tetap mati
   // dan tidak lanjut ke logika PID. Untuk jalan lagi, reset/restart board.
   if (robotStopped) {
