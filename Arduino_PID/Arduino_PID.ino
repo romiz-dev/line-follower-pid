@@ -214,7 +214,7 @@ MotorDriver motors(17, 16, 4, 18, 19, 23);
 const int BASE_SPEED = 150;
 
 // Batas waktu garis hilang sebelum motor dihentikan (ms)
-const unsigned long LINE_LOST_TIMEOUT_MS = 5000;
+const unsigned long LINE_LOST_TIMEOUT_MS = 3000;
 
 unsigned long lineLostStartTime = 0; // 0 berarti timer belum berjalan
 bool robotStopped = false;           // latch: sekali true, motor berhenti permanen
