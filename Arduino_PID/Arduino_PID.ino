@@ -84,7 +84,7 @@ class SensorArray {
 
       for (int i = 0; i < 8; i++) {
         int value = analogRead(pins[i]);
-        if (value > threshold) {
+        if (value < threshold) {
           weightedSum += weights[i];
           activeSensors++;
         }
@@ -176,7 +176,7 @@ class MotorDriver {
     // supaya belokan tajam lebih responsif, bukan cuma berhenti.
     void drive(int baseSpeed, float correction) {
       int speedR = baseSpeed - (int)correction;
-      int speedL = baseSpeed + (int)correction;
+      int speedL = baseSpeed + (int)correction; 
       setMotor(speedL, pinL1, pinL2, pinPWML);
       setMotor(speedR, pinR1, pinR2, pinPWMR);
     }
@@ -207,11 +207,11 @@ const int panjangKotak[8] = {
 // ke pin ADC1 (32, 33, 34, 35, 36, 39) atau matikan WiFi saat membaca sensor.
 const uint8_t SENSOR_PINS[8] = {13, 14, 27, 26, 25, 33, 32, 35};
 
-SensorArray sensors(SENSOR_PINS, 2000); // threshold awal, bisa dikalibrasi ulang
+SensorArray sensors(SENSOR_PINS, 1000); // threshold awal, bisa dikalibrasi ulang
 PIDController pid(1.2, 0.0, 0.5, 2000);
 MotorDriver motors(17, 16, 4, 18, 19, 23);
 
-const int BASE_SPEED = 150;
+const int BASE_SPEED = 100;
 
 // Batas waktu garis hilang sebelum motor dihentikan (ms)
 const unsigned long LINE_LOST_TIMEOUT_MS = 3000;
