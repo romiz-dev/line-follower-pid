@@ -175,8 +175,13 @@ class MotorDriver {
     // baseSpeed + correction bisa membuat salah satu roda mundur (nilai negatif)
     // supaya belokan tajam lebih responsif, bukan cuma berhenti.
     void drive(int baseSpeed, float correction) {
+<<<<<<< HEAD
       int speedL = baseSpeed - (int)correction;
       int speedR = baseSpeed + (int)correction;
+=======
+      int speedR = baseSpeed - (int)correction;
+      int speedL = baseSpeed + (int)correction;
+>>>>>>> 89f144a0295a4e6e1dcd3c773147d9a70fe55e87
       setMotor(speedL, pinL1, pinL2, pinPWML);
       setMotor(speedR, pinR1, pinR2, pinPWMR);
     }
