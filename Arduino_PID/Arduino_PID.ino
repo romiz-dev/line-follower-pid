@@ -234,7 +234,6 @@ void setup() {
 void loop() {
     layar.clearDisplay();
     layar.setTextColor(SSD1306_WHITE);
-    layar.setCursor(26, 20);
     layar.setTextSize(2);
     for (int i = 0; i < 8; i++){
       layar.fillRect(panjangKotak[i], 12, 12, analogRead(SENSOR_PINS[i]) / 102.375, SSD1306_WHITE);
